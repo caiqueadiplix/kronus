@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pedidos balcão (PDV)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../sidebar.css" />
+</head>
+<body data-route="balcao">
+
+  <aside class="app-sidebar" aria-label="Navegação principal">
+    <div class="sidebar-brand"><div class="sidebar-owl"><i></i></div><div class="sidebar-brand-text">anota <b>AI</b></div><div class="sidebar-collapse">≪</div></div>
+    <div class="sidebar-search"><span class="mag"></span><span>Procurando por algo?</span></div>
+    <div class="sidebar-promo"><div class="sidebar-promo-art">👾</div><div class="sidebar-promo-copy"><b>Crescimento da Loja</b><small>Atraia mais clientes</small></div><div class="sidebar-promo-arrow">›</div></div>
+    <div class="sidebar-label">Seu dia a dia</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" data-nav="pedidos" href="../pedidos/"><span class="sidebar-icon">▣</span><span>Pedidos</span><span class="sidebar-badge">0</span></a>
+      <a class="sidebar-link" data-nav="balcao" href="./"><span class="sidebar-icon">▧</span><span>Pedidos balcão (PDV)</span></a>
+      <div class="sidebar-coupon"><div class="mini-coupon">%</div><span>Cupons por nossa conta<br>para seu cliente voltar</span></div>
+      <a class="sidebar-link" data-nav="salao" href="../"><span class="sidebar-icon">⚗</span><span>Mesas e comandas</span></a>
+    </nav>
+    <div class="sidebar-label">Gestão</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" data-nav="cardapio" href="../cardapio/"><span class="sidebar-icon">☷</span><span>Gestor de cardápio</span><span class="sidebar-chevron">›</span></a>
+      <a class="sidebar-link" href="#"><span class="sidebar-icon">◎</span><span>Gestão Avançada</span><span class="sidebar-chevron">›</span></a>
+      <a class="sidebar-link" href="#"><span class="sidebar-icon">⌁</span><span>Entregas</span><span class="sidebar-chevron">›</span></a>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-account"><div class="account-logo">S&L</div><div class="account-copy"><b>Scub Lanches</b><small>Anterior filho</small><span class="account-state">FECHADO</span></div><div class="account-exit">↪</div></div>
+  </aside>
+
+  <header class="topbar">
+    <div class="promo"><div class="coupon">%</div><span>Seu cliente voltando com <b>cupons de desconto por nossa conta!</b></span><button>Ver detalhes</button></div>
+    <div class="header-status">
+      <div class="hs"><div class="circle">▤<i class="ok"></i></div><small class="open">Aberto</small></div>
+      <div class="hs"><div class="circle">♟<i class="offdot"></i></div><small class="off">OFF</small></div>
+      <div class="hs"><div class="circle yellow">S<i class="offdot"></i></div><small class="closed">FECHADO</small></div>
+      <div class="bell">♧<span>1</span></div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <main class="workspace">
+      <section class="page-title-row">
+        <h1>Pedidos balcão (PDV)</h1>
+        <div class="mode-tabs">
+          <button class="active">[ D ] Delivery e Balcão</button>
+          <a href="../">[ M ] Mesas e Comandas</a>
+        </div>
+      </section>
+
+      <section class="catalog-panel">
+        <div class="search-row">
+          <button class="filter-btn"><span class="funnel"></span>[F] Filtros</button>
+          <label class="search"><span>[ P ] Pesquisar</span><button aria-label="Pesquisar">⌕</button></label>
+        </div>
+        <div class="hint-row"><span>⌘ Navegação</span><span><kbd>ENTER</kbd> Selecionar item</span></div>
+        <div class="category-grid" id="categoryGrid">
+          <button class="category" data-cat="Lanches"><div class="pattern"></div><span>Lanches</span></button>
+          <button class="category" data-cat="Sucos"><div class="pattern"></div><span>Sucos</span></button>
+          <button class="category" data-cat="Bebidas"><div class="pattern"></div><span>Bebidas</span></button>
+        </div>
+        <div class="catalog-footer"><button>[ A ] Próximo</button></div>
+      </section>
+    </main>
+
+    <aside class="order-panel">
+      <div class="order-tabs"><button class="draft">[ CTRL+X ] Rascunhos <em>0</em></button><button disabled>Q Editar</button><button disabled>W Excluir</button></div>
+      <div class="order-head"><b>Itens do pedido</b><b>Subtotal</b><button>⚙</button></div>
+      <div class="empty-order" id="emptyOrder">Finalize o item ao lado, ele vai aparecer aqui</div>
+      <div class="order-items" id="orderItems"></div>
+      <button class="observation">▱ [O] Observação do pedido</button>
+      <div class="totals"><div><span>Subtotal</span><b id="subtotal">R$ 0,00</b></div><div><span>Entrega</span><a>Grátis</a></div><div class="total"><span>Total</span><b id="total">R$ 0,00</b></div></div>
+      <div class="customer-row"><input placeholder="(XX) X XXXX-XXXX"><input placeholder="Nome do cliente"></div>
+      <div class="action-grid"><button>[ E ] Entrega</button><button>[ R ] Pagamentos</button><button class="blue">[ T ] CPF/CNPJ</button><button>[ Y ] Ajustar valor</button></div>
+      <div class="generate-row"><button id="generate">[ ENTER ] Gerar pedido</button><button class="save">▤</button></div>
+    </aside>
+  </div>
+
+  <button class="suggestion">Enviar sugestão</button>
+  <button class="chat">▭</button>
+
+  <div class="modal hidden" id="modal"><div class="modal-card"><button class="x" id="closeModal">×</button><h2 id="modalTitle">Lanches</h2><div class="products" id="products"></div></div></div>
+  <script src="script.js"></script>
+  <script src="../sidebar.js"></script>
+</body>
+</html>
