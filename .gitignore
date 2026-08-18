@@ -1,0 +1,20 @@
+# Dependências geradas
+node_modules/
+backend/vendor/
+
+# Builds e arquivos temporários
+dist/
+output/
+outputs/
+tmp/
+*.zip
+
+# Dados locais e credenciais
+data/*.sqlite
+data/*.sqlite-*
+.env
+backend/.env
+
+# Logs/cache locais
+*.log
+.phpunit.result.cache
